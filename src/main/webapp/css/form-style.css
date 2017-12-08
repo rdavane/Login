@@ -1,0 +1,127 @@
+
+body{
+    font-family:Calibri, "Calibri Light", Verdana;
+    font-size:16px;
+    color:#333;
+}
+.clm01{
+    width:15%;
+    height:auto;
+    display:inline-block;
+    vertical-align:top;
+}
+.clm02{
+    width:15%;
+    height:auto;
+    display:inline-block;
+}
+input{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    display: block;
+    width: 100%;
+    outline:none;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 0;
+    background: #fff;
+    color: #000;
+    -webkit-font-smoothing: antialiased;
+    vertical-align: middle;
+}
+textarea{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    display: block;
+    width: 100%;
+    outline:none;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 0;
+    background: #fff;
+    color: #000;
+    -webkit-font-smoothing: antialiased;
+    vertical-align: middle;
+}
+select{
+    display: block;
+    width: 107%;
+    outline:none;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 0;
+    background: #fff;
+    color: #000;
+    -webkit-font-smoothing: antialiased;
+    vertical-align: middle;
+}
+
+fieldset{
+    border:#CCC thin solid;
+    border-radius:5px;
+    margin:0%;
+    padding:3%;
+    width:70%;
+    margin:0 auto;
+}
+legend{
+    padding:10px;
+    color:#0195db;
+    font-size:24px;
+}
+input[type=submit]
+{
+    padding:10px;
+    background:#0195db;
+    color:#FFF;
+    border:none;
+    height:34px;
+    width:50%;
+    border-radius:3px;
+    cursor:pointer;
+}
+input[type=submit]:hover
+{
+    background:#0082c0;
+}
+@media (max-width: 991px) {
+    .clm01{
+        width:100%;
+        height:auto;
+        display:inline-block;
+        vertical-align:top;
+    }
+    .clm02{
+        width:100%;
+        height:auto;
+        display:inline-block;
+    }
+    input{
+        width: 95%;
+    }
+    textarea{
+        width: 95%;
+    }
+    select{
+        width: 97%;
+    }
+    input[type=submit]
+    {
+        width:97%;
+    }
+}
+@media (max-width: 400px) {
+    input{
+        width: 90%;
+    }
+    textarea{
+        width: 90%;
+    }
+    select{
+        width: 98%;
+    }
+    input[type=submit]
+    {
+        width:98%;
+    }
+}

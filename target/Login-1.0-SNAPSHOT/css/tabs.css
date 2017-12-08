@@ -1,0 +1,58 @@
+@charset "utf-8";
+/* CSS Document */
+
+.tabs {
+	/*
+		Container styles
+	*/
+	display: -ms-flexbox;
+	display: flex;
+	background: transparent;
+	-ms-flex-flow: row wrap;
+	flex-flow: row wrap;
+}
+.tabs.vertical {
+	/*
+		Container styles
+	*/
+	display: -ms-flexbox;
+	display: flex;
+	background: transparent;
+	-ms-flex-flow: column nowrap;
+	flex-flow: column nowrap;
+}
+.tabs .tab-item {
+	background: #f4f4f4;
+	padding: 1rem;
+	line-height: 1;
+	margin: 0;
+	-ms-flex: 0 1 auto;
+	flex: 0 1 auto;
+	cursor: pointer;
+	color: #999;
+	border-bottom:2px solid #ccc;
+}
+.tabs .tab-item.is-active {
+	background: #f4f4f4;
+	color: #000;
+	border-bottom:2px solid #0097db
+}
+.tabs .tab-item.is-active:hover {
+	background: #f4f4f4;
+}
+.tabs .tab-item:hover {
+	background: #f4f4f4;
+	color: #000;
+	border-bottom:2px solid #0097db
+}
+.tab-contents {
+    padding: 1rem;
+    border-top: 2px solid #ccc;
+    margin-top: -2px;
+}
+.tab-contents .tab-content {
+	display: none;
+}
+.tab-contents .tab-content.is-active {
+	display: block;
+}

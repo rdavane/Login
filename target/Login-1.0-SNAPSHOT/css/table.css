@@ -1,0 +1,47 @@
+@charset "utf-8";
+/* CSS Document */
+
+.tftable {
+	font-size: 14px;
+	color: #666666;
+	width: 1000px;
+	border-width: 1px;
+	border-color: #729ea5;
+	border-collapse: collapse;
+	position:relative;
+}
+.tftable2 {
+	font-size: 14px;
+	color: #666666;
+	width: 800px;
+	border-width: 1px;
+	border-color: #729ea5;
+	border-collapse: collapse;
+	position:relative;
+}
+.tftable th {
+	font-size: 12px;
+	background-color: #0195db;
+	border-width: 1px;
+	padding: 15px;
+	border-style: solid;
+	border-color: #1badf2;
+	text-align: left;
+	color:#fff;
+}
+.tftable tr {
+	background-color: #ffffff;
+}
+.tftable td {
+	font-size: 14px;
+	border-width: 1px;
+	padding: 15px;
+	border-style: solid;
+	border-color: #e4e4e4;
+}
+.tftable tr:hover {
+	background-color: #ededed;
+	transition: background 0.25s ease-out;
+	cursor:pointer;
+	color:#000;
+}
