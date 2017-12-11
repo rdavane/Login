@@ -29,8 +29,8 @@
                 <input name="username" type="text" placeholder="Username"><br>
                 <input name="password" type="password" placeholder="Password"><br>
 
-                <input name="" type="checkbox" value="">
-                <div class="login-remember">Remeber your Password</div>
+                <!--<input name="" type="checkbox" value="">-->
+                <!--<div class="login-remember">Remeber your Password</div>-->
 
                 <input type="submit" value="Login" class="button" />
 

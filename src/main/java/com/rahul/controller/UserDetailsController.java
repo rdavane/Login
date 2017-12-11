@@ -5,7 +5,9 @@
  */
 package com.rahul.controller;
 
+import com.rahul.service.AllViewService;
 import javax.servlet.http.HttpSession;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -16,11 +18,14 @@ import org.springframework.web.servlet.ModelAndView;
  */
 @Controller
 public class UserDetailsController {
+    @Autowired
+    AllViewService viewService;
+    
     
     @RequestMapping(value = "success")
     public ModelAndView success(HttpSession session) {
        ModelAndView modelAndView=new ModelAndView("Success");
-       modelAndView.addObject("name", session.getAttribute("USERNAME"));
+       modelAndView.addObject("userdt",viewService.getanyhqldatalist("from userdetails"));
        return modelAndView;
     }
     
