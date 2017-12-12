@@ -7,7 +7,6 @@
         <pattern>/</pattern>
         <pattern>/Login</pattern>
         <pattern>/verifyLogin</pattern>
-        <pattern>/success</pattern>
         
     </decorator>
 </decorators>

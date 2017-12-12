@@ -43,6 +43,7 @@
     <decorator:head/>
   </head>
   <body>
+      <a href="logout" style="float: right;margin-top:10px;margin-right: 10px"><img src="images/logout.png" style="width: 25px"></a>
     <div class="grid-block">
       <div id="main" class="medium-8 grid-block">
         <div class="container-in dashboard-container">

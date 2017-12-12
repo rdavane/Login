@@ -18,15 +18,14 @@ import org.springframework.web.servlet.ModelAndView;
  */
 @Controller
 public class UserDetailsController {
+
     @Autowired
     AllViewService viewService;
-    
-    
+
     @RequestMapping(value = "success")
     public ModelAndView success(HttpSession session) {
-       ModelAndView modelAndView=new ModelAndView("Success");
-       modelAndView.addObject("userdt",viewService.getanyhqldatalist("from userdetails"));
-       return modelAndView;
+        ModelAndView modelAndView = new ModelAndView("Success");
+        modelAndView.addObject("userdt", viewService.getanyhqldatalist("from userdetails"));
+        return modelAndView;
     }
-    
 }
