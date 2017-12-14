@@ -26,9 +26,25 @@ public class AllViewServiceIMPL implements AllViewService{
        return viewDao.getanyhqldatalist(query);
     }
 
+    @Transactional
+    public Object getspecifichqldata(Class clazz, Object pk) {
+        return viewDao.getspecifichqldata(clazz, pk);
+    }
+
     @Override
     public List<Map<String,Object>> getanyjdbcdatalist(String query) {
         return viewDao.getanyjdbcdatalist(query);
     }
+
+    @Transactional
+    public int Get_Record_Count(String query){
+        return viewDao.Get_Record_Count(query);
+    }
+   
+    @Transactional
+    public int Get_Page_Count(String query, int PageSize){
+        return viewDao.Get_Page_Count(query, PageSize);
+    }
+
     
 }

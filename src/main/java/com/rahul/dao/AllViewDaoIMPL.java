@@ -19,6 +19,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 /**
  *
+ * @author krisnela
  */
 @Transactional
 @Repository
@@ -36,9 +37,43 @@ public class AllViewDaoIMPL implements AllViewDao{
     public List getanyhqldatalist(String query) {
         return sessionfactory.getCurrentSession().createQuery(query).list();
     }
+
+    @Override
+    public Object getspecifichqldata(Class clazz, Object pk) {
+        return(Object) sessionfactory.getCurrentSession().get(clazz, (Serializable) pk);
+    }
+
     @Override
     public List<Map<String,Object>> getanyjdbcdatalist(String query) {
         return jdbcTemplate.queryForList(query);
+    }
+
+    @Override
+    public int Get_Record_Count(String query) {
+        List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
+        list = jdbcTemplate.queryForList(query);
+        if (list != null) {
+            return list.size();
+        } else {
+            return 0;
+        }
+    }
+
+    @Override
+    public int Get_Page_Count(String query, int PageSize) {
+        List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
+        list = jdbcTemplate.queryForList(query);
+        int PageCnt = 0;
+        if (list != null) {
+            PageCnt = list.size() / PageSize;
+
+            int mod = list.size() % PageSize;
+
+            if (mod > 0) {
+                PageCnt = PageCnt + 1;
+            }
+        }
+        return PageCnt;
     }
     
 }

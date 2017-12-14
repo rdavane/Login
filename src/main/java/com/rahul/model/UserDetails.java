@@ -19,20 +19,20 @@ import javax.persistence.Table;
 @Table(name = "userdetails")
 public class UserDetails {
     @Id
-    private String id;
+    private int id;
     private String username,password;
 
-    public UserDetails(String id, String username, String password) {
+    public UserDetails(int id, String username, String password) {
         this.id = id;
         this.username = username;
         this.password = password;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -55,5 +55,4 @@ public class UserDetails {
     public UserDetails() {
     }
 
-    
 }

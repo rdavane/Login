@@ -15,6 +15,22 @@
     </head>
     <body>
         <h1>Logged In successful!</h1>
+        <form action="insertuser" method="post">
+            <table>
+                <tr>
+                    <td>UserName:</td>
+                    <td> <input type="text" name="username" placeholder="username"></td>
+                </tr>
+                <tr>
+                    <td>Password:</td>
+                    <td> <input type="text" name="password" placeholder="password"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><input type="submit" class="button" value="Save"></td>
+                </tr>
+            </table>
+        </form>
         <table class="table1">
             <thead>
                 <tr>

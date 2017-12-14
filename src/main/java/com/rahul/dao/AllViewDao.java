@@ -10,10 +10,17 @@ import java.util.Map;
 
 /**
  *
+ * @author krisnela
  */
 public interface AllViewDao<T> {
 
     public List<T> getanyhqldatalist(String query);
 
-    public List<Map<String, Object>> getanyjdbcdatalist(String query);    
+    public T getspecifichqldata(Class clazz, Object pk);
+
+    public List<Map<String, Object>> getanyjdbcdatalist(String query);
+    
+    public int Get_Record_Count(String query);
+    
+    public int Get_Page_Count(String query, int PageSize);    
 }
