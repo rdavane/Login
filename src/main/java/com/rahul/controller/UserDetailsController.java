@@ -7,12 +7,14 @@ package com.rahul.controller;
 
 import com.rahul.model.UserDetails;
 import com.rahul.service.AllInsertService;
+import com.rahul.service.AllUpdateService;
 import com.rahul.service.AllViewService;
 import java.util.List;
 import java.util.Map;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -28,6 +30,8 @@ public class UserDetailsController {
     AllViewService viewService;
     @Autowired
     AllInsertService insertService;
+    @Autowired
+    AllUpdateService updateService;
 
     @RequestMapping(value = "success")
     public ModelAndView success(HttpSession session) {
@@ -46,6 +50,11 @@ public class UserDetailsController {
         int id = map.get(0).get("id") + 1;
         details.setId(id);
         insertService.insert(details);
+        return "redirect:success";
+    }
+    @RequestMapping(value = "updateuser")
+    public String updateuser(@ModelAttribute UserDetails details) {
+        updateService.update(details);
         return "redirect:success";
     }
 }

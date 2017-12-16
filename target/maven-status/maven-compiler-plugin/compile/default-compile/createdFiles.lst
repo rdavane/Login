@@ -1,11 +1,15 @@
 com\rahul\dao\AllViewDao.class
+com\rahul\dao\AllUpdateDao.class
 com\rahul\service\AllViewService.class
 com\rahul\dao\AllInsertDao.class
 com\rahul\dao\AllInsertDaoIMPL.class
+com\rahul\service\AllUpdateService.class
 com\rahul\service\AllViewServiceIMPL.class
 com\rahul\dao\AllViewDaoIMPL.class
 com\rahul\controller\LoginController.class
+com\rahul\dao\AllUpdateDaoIMPL.class
 com\rahul\controller\UserDetailsController.class
+com\rahul\service\AllUpdateServiceIMPL.class
 com\rahul\interceptor\Interceptor.class
 com\rahul\model\UserDetails.class
 com\rahul\service\AllInsertServiceIMPL.class

@@ -9,13 +9,26 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <script src="js/jquery-1.10.2.js"></script>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="css/table1.css" rel="stylesheet" type="text/css">
         <title>Home</title>
+        <script>
+            function edituser(ob) {
+                $("#insert").hide();
+                $("#update").show();
+                var username = $(ob).parents("tr").find("#username").val();
+                var password = $(ob).parents("tr").find("#password").val();
+                var id = $(ob).parents("tr").find("#id").val();
+                $("#username_form").val(username)
+                $("#password_form").val(password)
+                $("#id_form").val(id);
+            }
+        </script>
     </head>
     <body>
         <h1>Logged In successful!</h1>
-        <form action="insertuser" method="post">
+        <form action="insertuser" method="post" id="insert">
             <table>
                 <tr>
                     <td>UserName:</td>
@@ -31,20 +44,39 @@
                 </tr>
             </table>
         </form>
+        <form action="updateuser" method="post" id="update" style="display: none">
+            <input type="text" name="id" id="id_form" hidden="">
+            <table>
+                <tr>
+                    <td>UserName:</td>
+                    <td> <input type="text" name="username" id="username_form" placeholder="username"></td>
+                </tr>
+                <tr>
+                    <td>Password:</td>
+                    <td> <input type="text" name="password" id="password_form" placeholder="password"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><input type="submit" class="button" value="Save"></td>
+                </tr>
+            </table>
+        </form>
         <table class="table1">
             <thead>
                 <tr>
                     <th>ID</th>
                     <th>User Name</th>
                     <th>Password</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
                 <c:forEach items="${userdt}" var="ob">
                     <tr>
-                        <td>${ob.id}</td>
-                        <td>${ob.username}</td>
-                        <td>${ob.password}</td>
+                        <td>${ob.id}<input type="text" id="id" value="${ob.id}" hidden=""></td>
+                        <td>${ob.username}<input type="text" id="username" value="${ob.username}" hidden=""></td>
+                        <td>${ob.password}<input type="text" id="password" value="${ob.password}" hidden=""></td>
+                        <td><a onclick="edituser(this)">edit</a></td>
                     </tr>
                 </c:forEach>
             </tbody>
