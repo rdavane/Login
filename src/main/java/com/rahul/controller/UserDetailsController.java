@@ -25,21 +25,21 @@ import org.springframework.web.servlet.ModelAndView;
  */
 @Controller
 public class UserDetailsController {
-
+    
     @Autowired
     AllViewService viewService;
     @Autowired
     AllInsertService insertService;
     @Autowired
     AllUpdateService updateService;
-
+    
     @RequestMapping(value = "success")
     public ModelAndView success(HttpSession session) {
         ModelAndView modelAndView = new ModelAndView("Success");
         modelAndView.addObject("userdt", viewService.getanyhqldatalist("from userdetails"));
         return modelAndView;
     }
-
+    
     @RequestMapping(value = "insertuser")
     public String insertuser(@RequestParam(value = "username") String username,
             @RequestParam(value = "password") String password) {
@@ -52,9 +52,16 @@ public class UserDetailsController {
         insertService.insert(details);
         return "redirect:success";
     }
+
     @RequestMapping(value = "updateuser")
     public String updateuser(@ModelAttribute UserDetails details) {
         updateService.update(details);
+        return "redirect:success";
+    }
+
+    @RequestMapping(value = "deleteuser")
+    public String deleteuser(@RequestParam(value = "id") String id) {
+        updateService.updateanyhqlquery("delete from userdetails where id='" + id + "'");
         return "redirect:success";
     }
 }

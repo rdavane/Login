@@ -76,7 +76,9 @@
                         <td>${ob.id}<input type="text" id="id" value="${ob.id}" hidden=""></td>
                         <td>${ob.username}<input type="text" id="username" value="${ob.username}" hidden=""></td>
                         <td>${ob.password}<input type="text" id="password" value="${ob.password}" hidden=""></td>
-                        <td><a onclick="edituser(this)">edit</a></td>
+                        <td>
+                            <a onclick="edituser(this)">edit</a>|<a href="deleteuser?id=${ob.id}">delete</a>
+                        </td>
                     </tr>
                 </c:forEach>
             </tbody>
