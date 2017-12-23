@@ -25,21 +25,28 @@ import org.springframework.web.servlet.ModelAndView;
  */
 @Controller
 public class UserDetailsController {
-    
+
     @Autowired
     AllViewService viewService;
     @Autowired
     AllInsertService insertService;
     @Autowired
     AllUpdateService updateService;
-    
+
     @RequestMapping(value = "success")
-    public ModelAndView success(HttpSession session) {
+    public ModelAndView success(HttpSession session,
+            @RequestParam(value = "search", required = false) String search
+    ) {
         ModelAndView modelAndView = new ModelAndView("Success");
-        modelAndView.addObject("userdt", viewService.getanyhqldatalist("from userdetails"));
+        String query = "";
+        query = "select * from userdetails ";
+        if (search != null && !search.equals("")) {
+            query = query + search;
+        }
+        modelAndView.addObject("userdt", viewService.getanyjdbcdatalist(query));
         return modelAndView;
     }
-    
+
     @RequestMapping(value = "insertuser")
     public String insertuser(@RequestParam(value = "username") String username,
             @RequestParam(value = "password") String password) {

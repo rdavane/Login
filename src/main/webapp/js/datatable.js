@@ -15,7 +15,7 @@ $(document).ready(function () {
     $(".pg").on("click", function (e) {
         //alert($(this).val());
         $('#page').val($(this).val());
-         document.forms[0].submit();
+        document.forms[0].submit();
         return true;
     });
 
@@ -24,7 +24,7 @@ $(document).ready(function () {
         //alert($(this).attr('id'));
         $('#page').val($(this).attr('id'));
         $('#startpage').val($(this).attr('id'));
-         document.forms[0].submit();
+        document.forms[0].submit();
         return true;
     });
 
@@ -36,7 +36,7 @@ $(document).ready(function () {
         if (i == '')
         {
             $('#page').val('1');
-             document.forms[0].submit();
+            document.forms[0].submit();
             return true;
         }
         if (i != '')
@@ -49,7 +49,7 @@ $(document).ready(function () {
                 var prevpage = 1;
             //alert('prevpage: ' + prevpage);
             $('#page').val(prevpage);
-             document.forms[0].submit();
+            document.forms[0].submit();
             return true;
         }
     });
@@ -68,7 +68,7 @@ $(document).ready(function () {
             if (pagecnt > 1)
             {
                 $('#page').val('2');
-                 document.forms[0].submit();
+                document.forms[0].submit();
                 return true;
             }
         }
@@ -81,12 +81,11 @@ $(document).ready(function () {
                 var nextpage = currpage + 1;
                 if (nextpage > pagecnt)
                     nextpage = pagecnt;
-            }
-            else
+            } else
                 var nextpage = 1;
 //            alert('nextpage: ' + nextpage);
             $('#page').val(nextpage);
-             document.forms[0].submit();
+            document.forms[0].submit();
             return true;
         }
     });
@@ -97,7 +96,7 @@ function Search(btn, stURL)
 //    alert(btn);
     var searchtext = '';
     searchtext = $('#txtsearch').val();
-    var searchtext1=searchtext.replace(/\./g , '');
+    var searchtext1 = searchtext.replace(/\./g, '');
 //    searchtext=searchtext1;
 //    alert(searchtext);
 
@@ -112,7 +111,7 @@ function Search(btn, stURL)
             var id = $(this).prop('id');
             if (id != "")
             {
-                strcondition = strcondition + id + " like '%" + searchtext + "%' or "  +" "+ id + " like '%" + searchtext1 + "%' or "
+                strcondition = strcondition + id + " like '%" + searchtext + "%' or " + " " + id + " like '%" + searchtext1 + "%' or "
             }
         });
 
@@ -127,10 +126,10 @@ function Search(btn, stURL)
         $('#condition').val(strcondition1);
 
         $('#stSearchURL').val('txtsearch=1&condition=' + strcondition1);
-        
+
         document.forms[0].action = stURL;
         document.forms[0].submit();
-         return true;
+        return true;
     } else
     {
         $('#condition').val('');

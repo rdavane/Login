@@ -24,6 +24,20 @@
                 $("#password_form").val(password)
                 $("#id_form").val(id);
             }
+            function search1() {
+                var keyword = $("#search_keyword").val();
+                var strcondition = "where ";
+                $('.table1 > thead > tr > th').each(function () {
+                    var id = $(this).prop('id');
+                    if (id != "")
+                    {
+                        strcondition = strcondition + id + " like '%" + keyword + "%' or "
+                    }
+                });
+                strcondition = strcondition.substring(0, strcondition.length - 4)
+                $("#search").val(strcondition);
+                $("#success").submit()
+            }
         </script>
     </head>
     <body>
@@ -46,7 +60,7 @@
         </form>
         <form action="updateuser" method="post" id="update" style="display: none">
             <input type="text" name="id" id="id_form" hidden="">
-            <table>
+            <table >
                 <tr>
                     <td>UserName:</td>
                     <td> <input type="text" name="username" id="username_form" placeholder="username"></td>
@@ -57,31 +71,46 @@
                 </tr>
                 <tr>
                     <td></td>
-                    <td><input type="submit" class="button" value="Save"></td>
+                    <td><input type="submit" class="button" value="Update"></td>
                 </tr>
             </table>
+        </form>
+        <form action="success" id="success" method="post">
+            <input type="text" hidden="" name="search" id="search"> 
+            <div> 
+                <div style="float: right"><input type="button" class="button" onclick="search1()" value="search"></div>
+                <div style="float: right"><input type="text" style="height: 38px !important" id="search_keyword"  placeholder="Search"></div>
+                <div></div>
+            </div>
         </form>
         <table class="table1">
             <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>User Name</th>
-                    <th>Password</th>
+                    <th id="id" >ID</th>
+                    <th id="username">User Name</th>
+                    <th id="password">Password</th>
                     <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
-                <c:forEach items="${userdt}" var="ob">
-                    <tr>
-                        <td>${ob.id}<input type="text" id="id" value="${ob.id}" hidden=""></td>
-                        <td>${ob.username}<input type="text" id="username" value="${ob.username}" hidden=""></td>
-                        <td>${ob.password}<input type="text" id="password" value="${ob.password}" hidden=""></td>
-                        <td>
-                            <a onclick="edituser(this)">edit</a>|<a href="deleteuser?id=${ob.id}">delete</a>
-                        </td>
-                    </tr>
-                </c:forEach>
-            </tbody>
-        </table>
-    </body>
+                <c:choose>
+                    <c:when test="${userdt[0]==null}">
+                    <td align="center" colspan="4">no data available</td>
+                </c:when>
+                <c:otherwise>
+                    <c:forEach items="${userdt}" var="ob">
+                        <tr>
+                            <td>${ob.id}<input type="text" id="id" value="${ob.id}" hidden=""></td>
+                            <td>${ob.username}<input type="text" id="username" value="${ob.username}" hidden=""></td>
+                            <td>${ob.password}<input type="text" id="password" value="${ob.password}" hidden=""></td>
+                            <td>
+                                <a onclick="edituser(this)">edit</a>|<a href="deleteuser?id=${ob.id}">delete</a>
+                            </td>
+                        </tr>
+                    </c:forEach>
+                </c:otherwise>
+            </c:choose>
+        </tbody>
+    </table>
+</body>
 </html>
