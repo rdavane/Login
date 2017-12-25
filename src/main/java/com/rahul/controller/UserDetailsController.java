@@ -5,12 +5,17 @@
  */
 package com.rahul.controller;
 
+import com.google.gson.Gson;
 import com.rahul.model.UserDetails;
 import com.rahul.service.AllInsertService;
 import com.rahul.service.AllUpdateService;
 import com.rahul.service.AllViewService;
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -58,6 +63,24 @@ public class UserDetailsController {
         details.setId(id);
         insertService.insert(details);
         return "redirect:success";
+    }
+
+    @RequestMapping(value = "inser_user_ajax")
+    public void inser_user_ajax(@ModelAttribute UserDetails details,
+            HttpServletResponse response) {
+        String jsondata = "";
+        List<Map<String, Integer>> map = viewService.getanyjdbcdatalist("select max(id) id from userdetails");
+        int id = map.get(0).get("id") + 1;
+        details.setId(id);
+        insertService.insert(details);
+        jsondata = new Gson().toJson(details);
+        response.setContentType("application/json");
+        response.setCharacterEncoding("UTF-8");
+        try {
+            response.getWriter().write(jsondata);
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
     }
 
     @RequestMapping(value = "updateuser")

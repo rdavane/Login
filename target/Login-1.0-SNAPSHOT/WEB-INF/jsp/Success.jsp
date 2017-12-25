@@ -38,6 +38,27 @@
                 $("#search").val(strcondition);
                 $("#success").submit()
             }
+            $(document).ready(function () {
+                $("#insertsubmit").click(function (e) {
+                    e.preventDefault();
+                    var name = $("#insert_name").val();
+                    var password = $("#insert_password").val();
+                    $.ajax({
+                        url: "inser_user_ajax",
+                        type: 'POST',
+                        data: {
+                            username: name,
+                            password: password
+                        },
+                        success: function (data) {
+                            alert('success');
+                        },
+                        error: function () {
+                            alert('error');
+                        }
+                    })
+                })
+            })
         </script>
     </head>
     <body>
@@ -46,15 +67,15 @@
             <table>
                 <tr>
                     <td>UserName:</td>
-                    <td> <input type="text" name="username" placeholder="username"></td>
+                    <td> <input type="text" id="insert_name" name="username" placeholder="username"></td>
                 </tr>
                 <tr>
                     <td>Password:</td>
-                    <td> <input type="text" name="password" placeholder="password"></td>
+                    <td> <input type="text" id="insert_password" name="password" placeholder="password"></td>
                 </tr>
                 <tr>
                     <td></td>
-                    <td><input type="submit" class="button" value="Save"></td>
+                    <td><input type="submit" id="insertsubmit" class="button" value="Save"></td>
                 </tr>
             </table>
         </form>
@@ -71,7 +92,7 @@
                 </tr>
                 <tr>
                     <td></td>
-                    <td><input type="submit" class="button" value="Update"></td>
+                    <td><input type="submit" class="button" id="updatesubmit" value="Update"></td>
                 </tr>
             </table>
         </form>
